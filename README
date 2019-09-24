@@ -1,0 +1,73 @@
+
+################################## VERSÃO ##############################################################3
+ASTERISK VERSÃO : 13:28:1
+DAHDI - 2.10.2
+LIBPRI 1-4
+PHP 5.6.40
+
+################################## INSTALAÇÃO ##############################################################3
+
+INSTALL
+apt-get install Linux-headers-`uname -r`
+apt-get install make
+apt-get install gcc
+apt-get install g++
+apt-get install libgtk2.0-dev
+apt-get install libnewt-dev
+apt-get install libxml2-dev
+apt-get install libncurses5-dev
+apt-get install libz-dev
+apt-get install libssl-dev
+apt-get install libsqlite3-dev
+apt-get install uuid-dev
+apt-get install uuid
+apt-get install libjansson-dev
+
+tax -zxvf pacote
+
+cd /dahdi
+make all
+make install
+
+cd /libpri
+make clean
+make
+make install
+
+cd /asterisk
+./configure
+make
+make install
+make samples
+make progdocs
+make config
+
+/etc/init.d/asterisk start
+make install-logrotate 
+
+
+apt-get install php5
+apt-get install php5-fpm
+apt-get install php5-curl
+apt-get install php5-cli
+apt-get install curl
+
+################################## ADD e ERROS ##############################################################3
+
+erro AGI FILEFORMAT
+VI :set fileformat=dos
+
+
+Instalar os sons de Asterisk
+mkdir /var/lib/asterisk/sounds/pt-br
+Baixar o pacote core e extra
+
+cd /var/lib/asterisk/sounds/pt-br
+wget -O core.zip https://www.asterisksounds.org/pt-br/download/asterisk-sounds-core-pt-BR-sln16.zip
+wget -O extra.zip https://www.asterisksounds.org/pt-br/download/asterisk-sounds-extra-pt-BR-sln16.zip
+unzip core.zip
+unzip extra.zip
+chown -R asterisk.asterisk /var/lib/asterisk/sounds/pt-br
+find /var/lib/asterisk/sounds/pt-br -type d -exec chmod 0775 {} \;
+
+
