@@ -5,7 +5,7 @@ DAHDI - 2.10.2
 LIBPRI 1-4
 PHP 5.6.40
 
-################################## INSTALAÇÃO ##############################################################3
+################################## INSTALAÇÃO ASTERISK  ##############################################################3
 
 INSTALL
 apt-get install Linux-headers-`uname -r`
@@ -80,6 +80,9 @@ unzip master.zip
 cd asterisk-googletts-master
 cp googletts.agi /usr/share/asterisk/agi-bin
 
+
+OBS: 
+para alterar o cliete no arquivo /var/lib/asterisk/agi-bin/SalesForce.php , voce deve alterar a variavel $tokenDC pelo token do cliente.
 
 
 
