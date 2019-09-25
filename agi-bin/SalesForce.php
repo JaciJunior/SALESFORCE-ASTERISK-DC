@@ -4,6 +4,7 @@ require_once("phpagi.php");
     
     $agi = new AGI();
     $cpfdigits = $argv[1];
+    $tokenDC = 'bb9abbca834847a2a65f9fb8ec2a5980';
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -17,7 +18,7 @@ require_once("phpagi.php");
         CURLOPT_POSTFIELDS => "{ \"cpf\": \"$cpfdigits\"}",
         CURLOPT_HTTPHEADER => array(
             "App-Origin: jaci@directcall.com.br",
-            "Authorization: Bearer bb9abbca834847a2a65f9fb8ec2a5980",
+            "Authorization: Bearer ".$tokenDC,
             "Cache-Control: no-cache",
             "Connection: keep-alive",
             "Content-Type: application/json",
